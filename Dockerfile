@@ -31,11 +31,12 @@ RUN cp $PHOENIX_HOME/phoenix-core-$PHOENIX_VERSION-HBase-$HBASE_MAJOR.jar $HBASE
 RUN cp $PHOENIX_HOME/phoenix-server-$PHOENIX_VERSION-HBase-$HBASE_MAJOR.jar $HBASE_HOME/lib/phoenix-server.jar
 
 # bootstrap-phoenix
+ADD listtables.sql /etc/listtables.sql
 ADD bootstrap-phoenix.sh /etc/bootstrap-phoenix.sh
 RUN chown root:root /etc/bootstrap-phoenix.sh
 RUN chmod 700 /etc/bootstrap-phoenix.sh
 
-CMD ["/etc/bootstrap-phoenix.sh", "-bash"]
+CMD ["/etc/bootstrap-phoenix.sh"]
 
 EXPOSE 2181
 EXPOSE 8765

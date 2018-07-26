@@ -15,3 +15,6 @@ Apache Phoenix - 4.7.0
 - Add `127.0.0.1 docker-phoenix` to `/etc/hosts`
 - docker run -p 2181:2181 -p 8765:8765 -p 16000:16000 -p 16201:16201 -h docker-phoenix -it bszmit/hbase-phoenix /etc/bootstrap-phoenix.sh -sqlline
 
+You can provide your initialization script for Phoenix sqlline:
+- docker run -p 2181:2181 -p 8765:8765 -p 16000:16000 -p 16201:16201 -h docker-phoenix -it bszmit/hbase-phoenix /etc/bootstrap-phoenix.sh -sqlline my_init_script.sql
+

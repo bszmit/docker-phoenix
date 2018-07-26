@@ -15,14 +15,12 @@ $HADOOP_PREFIX/sbin/start-yarn.sh
 $ZOO_HOME/bin/zkServer.sh start
 $HBASE_HOME/bin/start-hbase.sh
 
-if [[ $1 == "-d" ]]; then
-  while true; do sleep 1000; done
+INIT_FILE=/etc/listtables.sql
+if [[ $1 == "-init" ]]; then
+    INIT_FILE=$2
 fi
 
-if [[ $1 == "-bash" ]]; then
-  /bin/bash
-fi
+/usr/local/phoenix/bin/sqlline.py 127.0.0.1:2181 $INIT_FILE
+echo "Container started..."
+while true; do sleep 1000; done 
 
-if [[ $1 == "-sqlline" ]]; then
-  /usr/local/phoenix/bin/sqlline.py 127.0.0.1:2181
-fi
