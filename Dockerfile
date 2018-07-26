@@ -37,4 +37,7 @@ RUN chmod 700 /etc/bootstrap-phoenix.sh
 
 CMD ["/etc/bootstrap-phoenix.sh", "-bash"]
 
+EXPOSE 2181
 EXPOSE 8765
+EXPOSE 16000 16201
+
